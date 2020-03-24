@@ -79,7 +79,11 @@ class PolygonTest {
         Polygon pl = new Polygon(new Point3D(0, 0, 1), new Point3D(1, 0, 0), new Point3D(0, 1, 0),
                 new Point3D(-1, 1, 1));
         double sqrt3 = Math.sqrt(1d / 3);
-        assertEquals( new Vector(sqrt3, sqrt3, sqrt3), pl.getNormal(new Point3D(0, 0, 1)),"Bad normal to trinagle");
+        Vector expected =  new Vector(sqrt3, sqrt3, sqrt3);
+        // at this point we are assuming that each palne can have
+        // two opposite normals.
+        assertTrue(expected.equals(pl.getNormal(null)) || expected.equals(pl.getNormal(null).scale(-1)));
+//        assertEquals( new Vector(sqrt3, sqrt3, sqrt3), pl.getNormal(new Point3D(0, 0, 1)),"Bad normal to trinagle");
     }
 
 

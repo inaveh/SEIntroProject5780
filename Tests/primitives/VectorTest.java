@@ -27,11 +27,11 @@ class VectorTest {
     void testscale() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void dotProduct() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testcrossProduct() {
 
         Vector v1 = new Vector(3.5, -5.0, 10.0);

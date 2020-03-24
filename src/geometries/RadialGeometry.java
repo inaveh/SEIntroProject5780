@@ -1,5 +1,7 @@
 package geometries;
 
+import static primitives.Util.isZero;
+
 /**
  * @author Eliezer
  * RadialGeometry is ana abstract class that defines
@@ -13,8 +15,22 @@ public abstract class RadialGeometry implements Geometry{
      * @param _radius
      */
     public RadialGeometry(double _radius) {
+        if (isZero(_radius) || (_radius < 0.0))
+            throw new IllegalArgumentException("radius "+ _radius +" is not valid");
         this._radius = _radius;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RadialGeometry that = (RadialGeometry) o;
+
+        return isZero(this._radius -that._radius);
+    }
+
+
     public RadialGeometry(RadialGeometry other){
         this._radius= other._radius;
     }

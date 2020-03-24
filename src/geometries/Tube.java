@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Util;
 import primitives.Vector;
 /**
  * Represents an infinite tube in the 3D space.
@@ -62,7 +63,7 @@ public class Tube extends RadialGeometry{
         }
         catch (IllegalArgumentException ex)
         {
-            return (super.equals(other) && _center.equals((other._center)));
+            return (Util.isZero(this._radius - other._radius) && _center.equals((other._center)));
         }
         throw new IllegalArgumentException("direction cross product with parameter.direction == Vector(0,0,0)");
     }

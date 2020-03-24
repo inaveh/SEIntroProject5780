@@ -46,7 +46,6 @@ class VectorTest {
         System.out.println(v3.toString());
         System.out.println(v4.toString());
 
-//        v3 = v3.add(new Vector(0.0,0.0,0.5));
         try {
             v3.add(v4);
             fail("Vector (0,0,0) not valid");

@@ -54,8 +54,8 @@ class VectorTest {
         {
             assertTrue(e.getMessage()!= null);
         }
-        assertTrue(v3.length() >84);
-
+//        assertTrue(v3.length() >84);
+        assertEquals(84,v3.length(),0.659);
     }
 
     @org.junit.jupiter.api.Test

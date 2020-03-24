@@ -1,12 +1,12 @@
 package geometries;
 
 import primitives.Point3D;
-import primitives.Vector;
+import primitives.*;
 
 public class Plane implements Geometry {
 
     Point3D _p;
-    primitives.Vector _normal;
+    Vector _normal;
 
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
         _p = new Point3D(p1);

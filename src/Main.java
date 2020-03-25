@@ -22,11 +22,10 @@ public final class Main {
             new Vector(0, 0, 0);
             out.println("ERROR: zero vector does not throw an exception");
         } catch (Exception ex) {
-            String expectedMsg = "Point3D(0.0,0.0,0.0) not valid for vector head";
-            if (!expectedMsg.equals(ex.getMessage())) {
-                out.println("error ");
+            String expected = "Point3D(0.0,0.0,0.0) not valid for vector head";
+            if (expected.compareTo(ex.getMessage()) != 0) {
+                out.println(ex.getMessage());
             }
-//            out.println(ex.getMessage());
         }
 
         Vector v1 = new Vector(1, 2, 3);

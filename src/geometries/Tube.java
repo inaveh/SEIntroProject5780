@@ -1,55 +1,51 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Util;
-import primitives.Vector;
+import primitives.*;
+
 /**
  * Represents an infinite tube in the 3D space.
  * That is, the cylinder does not have a length.
  */
 
-public class Tube extends RadialGeometry{
+public class Tube extends RadialGeometry {
     /**
-     * Represents the direction of the tube
+     *  represents the direction and the reference point
      */
-    private final Vector _direction;
+    private final Ray _ray;
 
     /**
-     * A center point in the tube
-     */
-    private final Point3D _center;
-    /**
      * constructor for a new Cylinder object
+     *
      * @param _radius the radius of the cylinder
-     * @param _direction the direction of the cylinder
+     * @param _ray    the direction of the cylinder from a center point
      * @throws Exception in case of a negative radius
      */
-    public Tube(double _radius,Point3D _center,Vector _direction) {
+    public Tube(double _radius, Ray _ray) {
         super(_radius);
-        this._center = new Point3D(_center);
-        this._direction= _direction.normalized();
+        this._ray = new Ray(_ray);
     }
+
     /**
      * copy constructor for a tube object to be deep copied
+     *
      * @param other the source parameter
      */
     public Tube(Tube other) {
         super(other);
-        this._center = new Point3D(other._center);
-        this._direction = other._direction.normalized();
+        this._ray = new Ray(other._ray);
     }
 
-    public Vector get_direction() {
-        return new Vector(_direction);
-    }
-
-    public Point3D get_center() {
-        return new Point3D(_center);
+    /**
+     *
+     * @return ray
+     */
+    public Ray get_ray() {
+        return new Ray(_ray);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == null || !(obj instanceof Tube))
+        if (obj == null || !(obj instanceof Tube))
             return false;
         if (this == obj)
             return true;
@@ -57,32 +53,34 @@ public class Tube extends RadialGeometry{
 
         //the two vectors needs to be in the same direction,
         //but not necessary to have the same length.
-        try
-        {
-            Vector v = _direction.crossProduct(other._direction);
-        }
-        catch (IllegalArgumentException ex)
-        {
-            return (Util.isZero(this._radius - other._radius) && _center.equals((other._center)));
+        try {
+            Vector v = _ray.getDirection().crossProduct(other._ray.getDirection());
+        } catch (IllegalArgumentException ex) {
+            return (Util.isZero(this._radius - other._radius) && _ray.getPoint().equals((_ray.getPoint())));
         }
         throw new IllegalArgumentException("direction cross product with parameter.direction == Vector(0,0,0)");
     }
 
     @Override
     public String toString() {
-        return "point: "      + _center +
-                " direction: " + _direction +
-                ", radius: "   + _radius;
+        return "ray: " + _ray +
+                ", radius: " + _radius;
     }
+
+    /**
+     *
+     * @param point point to calculate the normal
+     * @return returns normal vector
+     */
     @Override
     public Vector getNormal(Point3D point) {
         //The vector from the point of the cylinder to the given point
-        Vector vector1 = point.subtract(_center);
+        Vector vector1 = point.subtract(_ray.getPoint());
 
         //We need the projection to multiply the _direction unit vector
-        double projection = vector1.dotProduct(_direction);
+        double projection = vector1.dotProduct(_ray.getDirection());
 
-        Vector vector2 = _direction.scale(projection);
+        Vector vector2 = _ray.getDirection().scale(projection);
 
         //This vector is orthogonal to the _direction vector.
         Vector check = vector1.subtract(vector2);

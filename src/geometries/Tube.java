@@ -2,6 +2,8 @@ package geometries;
 
 import primitives.*;
 
+import static primitives.Util.isZero;
+
 /**
  * Represents an infinite tube in the 3D space.
  * That is, the cylinder does not have a length.
@@ -75,15 +77,21 @@ public class Tube extends RadialGeometry {
     @Override
     public Vector getNormal(Point3D point) {
         //The vector from the point of the cylinder to the given point
-        Vector vector1 = point.subtract(_ray.getPoint());
+        Point3D o = _ray.getPoint();
+        Vector v = _ray.getDirection();
+
+        Vector vector1 = point.subtract(o);
 
         //We need the projection to multiply the _direction unit vector
-        double projection = vector1.dotProduct(_ray.getDirection());
-
-        Vector vector2 = _ray.getDirection().scale(projection);
-
+        double projection = vector1.dotProduct(v);
+        if(!isZero(projection))
+        {
+            // projection of P-O on the ray:
+            o.add(v.scale(projection));
+        }
+    
         //This vector is orthogonal to the _direction vector.
-        Vector check = vector1.subtract(vector2);
+        Vector check = point.subtract(o);
         return check.normalize();
     }
 }

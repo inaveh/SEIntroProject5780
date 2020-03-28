@@ -13,7 +13,7 @@ public class Tube extends RadialGeometry {
     /**
      *  represents the direction and the reference point
      */
-    private final Ray _ray;
+    protected final Ray _ray;
 
     /**
      * constructor for a new Cylinder object

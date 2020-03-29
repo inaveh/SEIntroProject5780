@@ -29,17 +29,7 @@ public class Tube extends RadialGeometry {
         this._ray = new Ray(_ray);
     }
 
-    /**
-     * copy constructor for a tube object to be deep copied
-     *
-     * @param other the source parameter
-     */
-    public Tube(Tube other) {
-        super(other);
-        this._ray = new Ray(other._ray);
-    }
-
-    /**
+     /**
      *
      * @return ray
      */
@@ -47,23 +37,23 @@ public class Tube extends RadialGeometry {
         return new Ray(_ray);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof Tube))
-            return false;
-        if (this == obj)
-            return true;
-        Tube other = (Tube) obj;
-
-        //the two vectors needs to be in the same direction,
-        //but not necessary to have the same length.
-        try {
-            Vector v = _ray.getDirection().crossProduct(other._ray.getDirection());
-        } catch (IllegalArgumentException ex) {
-            return (Util.isZero(this._radius - other._radius) && _ray.getPoint().equals((_ray.getPoint())));
-        }
-        throw new IllegalArgumentException("direction cross product with parameter.direction == Vector(0,0,0)");
-    }
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj == null || !(obj instanceof Tube))
+//            return false;
+//        if (this == obj)
+//            return true;
+//        Tube other = (Tube) obj;
+//
+//        //the two vectors needs to be in the same direction,
+//        //but not necessary to have the same length.
+//        try {
+//            Vector v = _ray.getDirection().crossProduct(other._ray.getDirection());
+//        } catch (IllegalArgumentException ex) {
+//            return (Util.isZero(this._radius - other._radius) && _ray.getPoint().equals((_ray.getPoint())));
+//        }
+//        throw new IllegalArgumentException("direction cross product with parameter.direction == Vector(0,0,0)");
+//    }
 
     @Override
     public String toString() {

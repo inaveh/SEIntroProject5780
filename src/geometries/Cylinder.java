@@ -29,27 +29,7 @@ public class Cylinder extends Tube {
         this._height = _height;
     }
 
-    /**
-     *
-     * @param other parameter Cylinder
-     */
-    public Cylinder(Cylinder other) {
-        super(other._radius, other._ray);
-        this._height = other._height;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-
-        Cylinder cylinder = (Cylinder) o;
-
-        return  super.equals((Tube)o) && isZero(this._height - this._height);
-    }
-
-    /**
+      /**
      * @author Dan Zilberstein
      * @param point point to calculate the normal
      * @return normal

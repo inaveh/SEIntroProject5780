@@ -1,5 +1,7 @@
 package primitives;
 
+import static primitives.Util.isZero;
+
 /**
  * Ray class
  */
@@ -23,6 +25,10 @@ public class Ray {
         _point = new Point3D(point);
         _direction = new Vector(direction).normalized();
     }
+    public Point3D getTargetPoint(double length) {
+           return isZero(length ) ? _point : new Point3D(_point).add(_direction.scale(length));
+    }
+
 
     /**
      * Copy constructor for a deep copy of an Ray object.

@@ -18,6 +18,7 @@ public class Sphere extends RadialGeometry {
      *
      * @param radius the radius of the sphere
      * @param center the center point of the sphere
+     *
      * @throws Exception in case of negative or zero radius from RadialGeometry constructor
      */
     public Sphere(double radius, Point3D center) {

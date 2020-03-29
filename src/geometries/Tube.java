@@ -2,6 +2,8 @@ package geometries;
 
 import primitives.*;
 
+import java.util.List;
+
 import static primitives.Util.isZero;
 
 /**
@@ -93,5 +95,10 @@ public class Tube extends RadialGeometry {
         //This vector is orthogonal to the _direction vector.
         Vector check = point.subtract(o);
         return check.normalize();
+    }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return null;
     }
 }

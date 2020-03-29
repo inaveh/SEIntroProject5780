@@ -94,8 +94,8 @@ public class Vector {
     }
 
     /**
-     * @param v
-     * @return
+     * @param v the second vector
+     * @return new Vector for the crossproduct (this X v)
      */
     public Vector crossProduct(Vector v) {
         double w1 = this._head._y._coord * v._head._z._coord - this._head._z._coord * v._head._y._coord;

@@ -4,6 +4,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
@@ -27,6 +29,10 @@ public class Cylinder extends Tube {
         this._height = _height;
     }
 
+    /**
+     *
+     * @param other parameter Cylinder
+     */
     public Cylinder(Cylinder other) {
         super(other._radius, other._ray);
         this._height = other._height;
@@ -67,6 +73,11 @@ public class Cylinder extends Tube {
 
         o = o.add(v.scale(t));
         return point.subtract(o).normalize();
+    }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return super.findIntersections(ray);
     }
 
 

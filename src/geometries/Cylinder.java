@@ -4,6 +4,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
@@ -27,23 +29,7 @@ public class Cylinder extends Tube {
         this._height = _height;
     }
 
-    public Cylinder(Cylinder other) {
-        super(other._radius, other._ray);
-        this._height = other._height;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-
-        Cylinder cylinder = (Cylinder) o;
-
-        return  super.equals((Tube)o) && isZero(this._height - this._height);
-    }
-
-    /**
+      /**
      * @author Dan Zilberstein
      * @param point point to calculate the normal
      * @return normal
@@ -67,6 +53,11 @@ public class Cylinder extends Tube {
 
         o = o.add(v.scale(t));
         return point.subtract(o).normalize();
+    }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return super.findIntersections(ray);
     }
 
 

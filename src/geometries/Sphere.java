@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 public class Sphere extends RadialGeometry {
     /**
@@ -74,7 +75,7 @@ public class Sphere extends RadialGeometry {
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
         if (t1 <= 0 && t2 <= 0) return null;
-        if (t1 > 0 && t2 > 0) return List.of(ray.getTargetPoint(t1), ray.getTargetPoint(t2));
+        if (t1 > 0 && t2 > 0) return List.of(ray.getTargetPoint(t1), ray.getTargetPoint(t2)); //P1 , P2
         if (t1 > 0)
             return List.of(ray.getTargetPoint(t1));
         else

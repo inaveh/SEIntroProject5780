@@ -24,14 +24,14 @@ public class Geometries implements Intersectable {
     /**
      * Na le Hasbir befrotrot
      * @param ray
-     * @return
+     * @return list of Point3D that intersect the osef
      */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         List<Point3D> intersections = null;
 
-        for (Intersectable geometry : _geometries) {
-            List<Point3D> tempIntersections = geometry.findIntersections(ray);
+        for (Intersectable geo : _geometries) {
+            List<Point3D> tempIntersections = geo.findIntersections(ray);
             if (tempIntersections != null) {
                 if (intersections == null)
                     intersections = new ArrayList<Point3D>();

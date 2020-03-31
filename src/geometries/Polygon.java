@@ -101,7 +101,9 @@ public class Polygon implements Geometry {
         Vector v1  = _vertices.get(1).subtract(p0);
         Vector v2 = _vertices.get(0).subtract(p0);
         double sign = v.dotProduct(v1.crossProduct(v2));
-        if (isZero(sign)) return null;
+        if (isZero(sign))
+            return null;
+
         boolean positive = sign > 0;
 
         for (int i = _vertices.size() - 1; i > 0; --i) {

@@ -10,7 +10,7 @@ import static primitives.Util.isZero;
 
 public class Plane implements Geometry {
 
-    Point3D _p;
+    Point3D _p; //Q
     Vector _normal;
 
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
@@ -58,4 +58,5 @@ public class Plane implements Geometry {
 
         return t <= 0 ? null : List.of(ray.getTargetPoint(t));
     }
+
 }

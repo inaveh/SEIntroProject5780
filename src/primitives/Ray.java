@@ -25,6 +25,12 @@ public class Ray {
         _point = new Point3D(point);
         _direction = new Vector(direction).normalized();
     }
+
+    /**
+     * @author  Dan Zilberstein
+     * @param length
+     * @return new Point3D
+     */
     public Point3D getTargetPoint(double length) {
            return isZero(length ) ? _point : _point.add(_direction.scale(length));
     }

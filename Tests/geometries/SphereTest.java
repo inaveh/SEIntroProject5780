@@ -14,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class SphereTest {
 
+    Sphere sphere = new Sphere(1d, new Point3D(1, 0, 0));
+
+
     @Test
     void getNormalTest1() {
         Sphere sp = new Sphere(1.0, new Point3D(0, 0, 1));
@@ -28,8 +31,25 @@ class SphereTest {
     }
 
     @Test
+    void findIntersectionsTestEP_1()
+   {
+        // ============ Equivalence Partitions Tests ==============
+       Point3D p1 = new Point3D(0.0651530771650466, 0.355051025721682, 0);
+       Point3D p2 = new Point3D(1.53484692283495, 0.844948974278318, 0);
+       List<Point3D> exp = List.of(p1, p2);
+
+       // TC01: Ray's line is outside the sphere (0 points)
+       assertNull(sphere.findIntersections(new Ray(new Point3D(-1, 0, 0), new Vector(1, 1, 0))),
+               "Ray's line out of sphere");
+
+   }
+
+    /**
+     * @author Dan Zilberstein
+     */
+    @Test
     public void findIntersectionsTest() {
-        Sphere sphere = new Sphere(1d, new Point3D(1, 0, 0));
+//        Sphere sphere = new Sphere(1d, new Point3D(1, 0, 0));
 
         // ============ Equivalence Partitions Tests ==============
         Point3D p1 = new Point3D(0.0651530771650466, 0.355051025721682, 0);

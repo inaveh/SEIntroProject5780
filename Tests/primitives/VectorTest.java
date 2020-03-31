@@ -25,6 +25,16 @@ class VectorTest {
 
     @Test
     void testscale() {
+        Vector v1 = new Vector(1,1,1);
+
+        Vector v1test = v1.scale(1);
+        assertEquals(new Vector(1,1,1),v1test);
+
+        Vector v2test = v1test.scale(2);
+        assertEquals(new Vector(2,2,2),v2test);
+
+        Vector v3test = v2test.scale(-2);
+        assertEquals(new Vector(-4,-4,-4),v3test);
     }
 
     @Test

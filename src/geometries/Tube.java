@@ -79,7 +79,7 @@ public class Tube extends RadialGeometry {
         if(!isZero(projection))
         {
             // projection of P-O on the ray:
-            o.add(v.scale(projection));
+           o = o.add(v.scale(projection));
         }
     
         //This vector is orthogonal to the _direction vector.

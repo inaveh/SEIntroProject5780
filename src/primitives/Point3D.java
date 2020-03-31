@@ -66,6 +66,7 @@ public class Point3D {
     public double distance (Point3D other){
         return Math.sqrt(distanceSquared(other));
     }
+
     public Point3D add(Vector v) {
         return new Point3D(this._x._coord + v._head._x._coord,
                 this._y._coord + v._head._y._coord,

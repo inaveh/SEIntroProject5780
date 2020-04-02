@@ -7,7 +7,7 @@ import primitives.Vector;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author Dan Zilberstein
+ * @author Dan Zilberstein modified for JUnit 5 ny Eliezer Gensburger
  */
 class PolygonTest {
     /**

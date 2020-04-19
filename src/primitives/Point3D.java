@@ -50,13 +50,6 @@ public class Point3D {
         return new Coordinate(_z);
     }
 
-    public Vector subtract(Point3D p) {
-        return new Vector(new Point3D(
-                this._x._coord - p._x._coord,
-                this._y._coord - p._y._coord,
-                this._z._coord - p._z._coord));
-    }
-
     public double distanceSquared(Point3D other)
     {
         return ( (other._x._coord - this._x._coord) * (other._x._coord - this._x._coord) +
@@ -71,6 +64,19 @@ public class Point3D {
         return new Point3D(this._x._coord + v._head._x._coord,
                 this._y._coord + v._head._y._coord,
                 this._z._coord + v._head._z._coord);
+    }
+
+    public Point3D subtract(Vector v) {
+        return new Point3D(this._x._coord - v._head._x._coord,
+                this._y._coord - v._head._y._coord,
+                this._z._coord - v._head._z._coord);
+    }
+
+    public Vector subtract(Point3D p) {
+        return new Vector(new Point3D(
+                this._x._coord - p._x._coord,
+                this._y._coord - p._y._coord,
+                this._z._coord - p._z._coord));
     }
 
     @Override
@@ -91,4 +97,6 @@ public class Point3D {
                 ", " + _z +
                 ')';
     }
+
+
 }

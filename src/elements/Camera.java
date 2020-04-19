@@ -32,7 +32,7 @@ public class Camera {
     {
         if (isZero(screenDistance))
         {
-            return  null;
+            throw new IllegalArgumentException("distance cannot be 0");
         }
 
         Point3D Pc = _p0.add(_vTo.scale(screenDistance));
@@ -51,7 +51,7 @@ public class Camera {
         }
         if (! isZero(yi))
         {
-            Pij = Pij.add(_vUp.scale(-yi));
+            Pij = Pij.subtract(_vUp.scale(yi));
         }
 
         Vector Vij = Pij.subtract(_p0);

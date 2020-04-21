@@ -5,6 +5,9 @@ import primitives.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Dan Zilberstein
+ */
 class CameraTest {
 
     /**
@@ -26,7 +29,7 @@ class CameraTest {
                 camera.constructRayThroughPixel(4, 4, 0, 0,
                         10, 8, 8),"Bad ray");
 
-        // TC03: 4X4 Side (0,1)
+        // TC03: 4X4 Side (0,1) top row 2nd collumn
         assertEquals( new Ray(Point3D.ZERO, new Vector(-1, -3, 10)),
                 camera.constructRayThroughPixel(4, 4, 1, 0,
                         10, 8, 8),"Bad ray");

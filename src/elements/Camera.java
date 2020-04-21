@@ -26,6 +26,7 @@ public class Camera {
         _vRight = this._vTo.crossProduct(this._vUp).normalize();
 
     }
+
     public Ray constructRayThroughPixel(int nX, int nY,
                                         int j, int i, double screenDistance,
                                         double screenWidth, double screenHeight)
@@ -51,7 +52,7 @@ public class Camera {
         }
         if (! isZero(yi))
         {
-            Pij = Pij.subtract(_vUp.scale(yi));
+            Pij = Pij.subtract(_vUp.scale(yi)); // Pij.add(_vUp.scale(-yi))
         }
 
         Vector Vij = Pij.subtract(_p0);

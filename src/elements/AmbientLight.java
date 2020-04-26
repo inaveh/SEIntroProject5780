@@ -7,7 +7,7 @@ public class AmbientLight {
         return _intensity.getColor();
     }
 
-    Color _intensity;
+    private Color _intensity;
 
     public void setIntensity(Color _intensity) {
         this._intensity = _intensity;

@@ -51,13 +51,14 @@ public class Render {
                 List<Point3D> intersectionPoints = _scene.getGeometries().findIntersections(ray);
                 if (intersectionPoints == null) {
                     _imageWriter.writePixel(column, row, background);
-                 } else {
+                } else {
                     Point3D closestPoint = getClosestPoint(intersectionPoints);
                     _imageWriter.writePixel(column-1, row-1, calcColor(closestPoint));
                 }
             }
         }
     }
+
     /**
      * Finding the closest point to the P0 of the camera.
      * @param  intersectionPoints list of points, the function should find from
@@ -78,7 +79,6 @@ public class Render {
                 result =pt;
             }
         }
-
         return  result;
     }
 
@@ -87,19 +87,22 @@ public class Render {
      * @param interval The interval between the lines.
      */
     public void printGrid(int interval,Color colorsep) {
-        double width = this._imageWriter.getWidth();
-        double height = _imageWriter.getHeight();
+        double rows = this._imageWriter.getNx();
+        double collumns = _imageWriter.getNy();
         //Writing the lines.
-        for (int row = 0; row < height; row++)
-            for (int col = interval; col < width; col += interval) {
-                _imageWriter.writePixel(col, row, colorsep);
-                _imageWriter.writePixel(row, col, colorsep);
+        for (int col = 0; col < collumns; col++) {
+            for (int row = 0; row < rows; row++) {
+                if (col % interval == 0 || row % interval == 0) {
+                    _imageWriter.writePixel(row, col, colorsep);
+                }
             }
+        }
     }
 
     public void writeToImage() {
         _imageWriter.writeToImage();
     }
+
     /**
      * Calculate the color intensity in a point
      * @param point the point for which the color is required

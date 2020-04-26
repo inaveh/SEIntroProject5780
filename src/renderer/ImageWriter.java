@@ -41,6 +41,7 @@ public class ImageWriter {
         _nX = nX;
         _nY = nY;
 
+//        _image = new BufferedImage((int)_imageWidth, (int)_imageHeight, BufferedImage.TYPE_INT_RGB);
         _image = new BufferedImage(_nX, _nY, BufferedImage.TYPE_INT_RGB);
     }
 

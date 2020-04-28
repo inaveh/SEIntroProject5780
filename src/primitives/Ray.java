@@ -47,8 +47,12 @@ public class Ray {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof Ray))
+        if (obj == null){
+            return  false;
+        }
+        if (!(obj instanceof Ray)) {
             return false;
+        }
         if (this == obj)
             return true;
         Ray other = (Ray)obj;
@@ -58,7 +62,7 @@ public class Ray {
 
     @Override
     public String toString() {
-        return String.format ("point: " + _point + ", direction: " + _direction);
+        return "point: " + _point + ", direction: " + _direction;
     }
 
     /**

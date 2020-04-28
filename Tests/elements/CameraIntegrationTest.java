@@ -16,15 +16,14 @@ class CameraIntegrationTest {
     void constructRayThroughPixelWithSphere1() {
         //TO DO
         Sphere sph =  new Sphere(1, new Point3D(0, 0, 3));
-//        Ray ray = cam1.constructRayThroughPixel(3,3,0,0,1,3,3);
-//        List<Point3D> results =  sph.findIntersections(ray);
-        List<Point3D> results;
+
         int count = 0;
         int Nx =3;
         int Ny =3;
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                results = sph.findIntersections(cam1.constructRayThroughPixel(Nx, Ny, j, i, 1, 3, 3));
+        for (int i = 0; i < Nx; ++i) {
+            for (int j = 0; j < Ny; ++j) {
+                Ray ray = cam1.constructRayThroughPixel(3,3,j,i,1,3,3);
+                List<Point3D> results = sph.findIntersections(ray);
                 if (results != null)
                     count += results.size();
             }
@@ -45,8 +44,8 @@ class CameraIntegrationTest {
         int Ny =3;
 
         // TODO explanations
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
+        for (int i = 0; i < Nx; ++i) {
+            for (int j = 0; j < Ny; ++j) {
                 results = sph.findIntersections(cam2.constructRayThroughPixel(Nx, Ny, j, i, 1, 3, 3));
                 if (results != null)
                     count += results.size();
